@@ -51,6 +51,56 @@ int _printf(const char *format, ...)
 				_putchar('%');
 				count++;
 			}
+			else if (format[i] == 'd')
+			{
+				long n = va_arg(args, int);
+				char buf[12];
+				int j = 0;
+
+				if (n < 0)
+				{
+					_putchar('-');
+					count++;
+					n = -n;
+				}
+				if (n == 0)
+					buf[j++] = '0';
+				while (n > 0)
+				{
+					buf[j++] = (n % 10) + '0';
+					n /= 10;
+				}
+				while (j > 0)
+				{
+					_putchar(buf[--j]);
+					count++;
+				}
+			}
+			else if (format[i] == 'i')
+			{
+				long n = va_arg(args, int);
+				char buf[12];
+				int j = 0;
+
+				if (n < 0)
+				{
+					_putchar('-');
+					count++;
+					n = -n;
+				}
+				if (n == 0)
+					buf[j++] = '0';
+				while (n > 0)
+				{
+					buf[j++] = (n % 10) + '0';
+					n /= 10;
+				}
+				while (j > 0)
+				{
+					_putchar(buf[--j]);
+					count++;
+				}
+			}
 			else
 			{
 				_putchar('%');
